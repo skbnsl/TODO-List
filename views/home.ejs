@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>
+                    <%= title %>
+          </title>
+          <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+          <h2>TODO APP</h2>
+          <form action="/add-Task" method="post">
+                    <input type="text" name="description" placeholder="Write TODO" required>
+                    <select name="category" id="select" required>
+                              <option value="personal">personal</option>
+                              <option value="social">social</option>
+                              <option value="professional">professional</option>
+                              <option value="other">other</option>
+                    </select>
+                    <input type="date" name="due-date" required>
+                   <div>
+                    <button type="submit">Add Task</button>
+          </form>
+          <form action="/delete-task" method="get" class="aform">
+                    <button type="submit"> Delete Task </button>
+
+                    <% if(todo_list.length != 0){ %> 
+                    
+                              <% for(let i of todo_list){ %> 
+                             <div>
+                              <div>
+                              <input type="checkbox" name="<%= i._id %>">
+                               </div>
+                               <div>
+                                        <h6><%= i.description %> </h6>
+                                        <P> <%= i.date %> </p>
+                                        <P><%= i.category %></P>
+                               </div>         
+                             </div>                            
+                    
+                                        
+                              <% } %>
+
+                    <% } %>
+
+                    <% if(todo_list.length == 0){ %>
+                              
+                    <h1>No Task Added Yet</h1>
+                    
+                    <% } %>
+          </div>
+          </form>
+                    
+</body>
+</html>
