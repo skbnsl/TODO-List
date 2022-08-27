@@ -7,7 +7,7 @@ console.log('router loaded');
 
 router.get('/', homeController.home);
 
-router.post('/add-task', homeController.add);
+router.post('/add-Task', homeController.add);
 
 router.get('/delete-task', homeController.delete);
 
