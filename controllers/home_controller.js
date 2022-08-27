@@ -11,19 +11,16 @@ module.exports.home = function(req, res){
                               todo_list : task
                      });
           });
-}
+};
 
                               
 module.exports.add = function(req, res){
           try{
-                    console.log(req.body)
+                    console.log(req.body);
                     TaskList.create(req.body, function(err, task){
                               if(err){console.log('error in adding data', err); return;}
                               console.log(task);
-                              return res.render('home',{
-                                        title : "todo",
-                                        todo_list : task
-                               });
+                              return res.redirect('/');
                     });
           }
           catch(err){
@@ -47,7 +44,5 @@ module.exports.delete = function(req, res){
                               }
                     })
           }
-          return res.redirect('back',{
-                    todo_list : task
-          });
+          return res.redirect('back');
 }
