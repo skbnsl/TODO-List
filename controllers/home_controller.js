@@ -1,5 +1,6 @@
 const TaskList = require('../models/task');
 
+//controller for home page
 module.exports.home = function(req, res){
           TaskList.find({}, function(err, task){
                     if(err){
@@ -13,7 +14,7 @@ module.exports.home = function(req, res){
           });
 };
 
-                              
+//controller for adding task    
 module.exports.add = function(req, res){
           try{
                     console.log(req.body);
@@ -29,14 +30,18 @@ module.exports.add = function(req, res){
           
 }
 
-
+//controller for deleting task
 module.exports.delete = function(req, res){
+          //id of selected checkbox
           let id = req.query;
           console.log(id);
 
+          //length of selectd checkbox
           let checkboxes = Object.keys(id).length;
 
+          //loop over selected boxes
           for(let i=0; i<checkboxes; i++){
+                    //find the task in db by id and delete 
                     TaskList.findByIdAndDelete(Object.keys(id)[i], function(err){
                               if(err){
                                         console.log('error in deleting the item',err);

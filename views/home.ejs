@@ -7,47 +7,56 @@
           <title>
                     <%= title %>
           </title>
+          <script src="https://kit.fontawesome.com/c035598f8c.js" crossorigin="anonymous"></script>
           <link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body>
-          <h2>TODO APP</h2>
+          <h2>TODO List</h2>
+              <!--form for adding the task in todo list-->
           <form action="/add-Task" method="post">
-                    <input type="text" name="description" placeholder="Write TODO" required>
-                    <select name="category" id="select" required>
+                    <input type="text" id="desc" name="description" placeholder="Write TODO" required>
+                    <select id="category" name="category" id="select" required>
                               <option value="personal">personal</option>
                               <option value="social">social</option>
                               <option value="professional">professional</option>
                               <option value="other">other</option>
                     </select>
-                    <input type="date" name="date" required>
+                    <input id="date" type="date" name="date" required>
                    <div>
-                    <button type="submit">Add Task</button>
-          </form>
-          <form action="/delete-task" method="get" class="aform">
-                    <button type="submit"> Delete Task </button>
-
-                    <% if(todo_list.length != 0){ %> 
                     
+                    <button id="add-btn" class="fas fa-plus" type="submit">Add Task</button>
+          </form>
+            <!--form for delete the task in todo list and checkbox for task deletion-->
+          <form action="/delete-task" method="get" class="aform">
+                    <button id="delete-btn" class="fas fa-trash-alt" type="submit"> Delete Task </button>
+
+                    <!--if task-list length is not empty-->
+              <% if(todo_list.length != 0){ %> 
+                    <!--loop on task list-->
                               <% for(let i of todo_list){ %> 
                              <div>
                               <div>
+                              <hr>
                               <input type="checkbox" name="<%= i._id %>">
                                </div>
                                <div>
-                                        <h6><%= i.description %> </h6>
+                                        <!--print the task list -->
+                                        <h3><%= i.description %> </h3>
                                         <P> <%= i.date %> </p>
                                         <P><%= i.category %></P>
-                               </div>         
+                                </hr>
+                                      </div>         
                              </div>                            
                     
                                         
                               <% } %>
 
                     <% } %>
-
+                        <!--if task-list length is empty-->
                     <% if(todo_list.length == 0){ %>
                               
+                      <!--if task-list length is empty then print  -->
                     <h1>No Task Added Yet</h1>
                     
                     <% } %>

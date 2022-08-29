@@ -1,3 +1,23 @@
 *{
           text-align: center;
 }
+
+#desc{
+          padding : 10px;
+}
+
+#category{
+          padding: 10px;
+}
+
+#date{
+          padding: 10px;
+}
+
+#add-btn{
+          padding: 10px;
+}
+
+#delete-btn{
+          padding: 10px;
+}
